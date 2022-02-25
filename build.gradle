@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.4.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'io.appium:java-client:7.6.0'
+    //  implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.9'
+    implementation 'com.aventstack:extentreports:4.0.9'
+}
+
+test {
+    useTestNG()
+}
+task reg(type: Test) {
+    useTestNG {
+        def groups = System.getProperty('groups')
+        if (groups != null) {
+            includeGroups groups
+        }
+
+        def suite = System.getProperty('suite', '')
+        if (suite.equals('quick')) {
+            suites 'src/test/resources/test.xml'
+        } else if (suite.equals('testSiute')) {
+            suites 'src/test/resources/extentreport.xml'
+        } else {
+            suites 'src/test/resources/test.xml'
+        }
+        if (project.hasProperty('device')) {
+            systemProperty 'device', "${device}";
+        }
+    }
+}
