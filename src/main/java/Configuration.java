@@ -51,7 +51,7 @@ public class Configuration {
 
         public static void startEmulator() throws IOException, InterruptedException
         {
-            Runtime.getRuntime().exec("src/test/resources/2XL_API_30.bat");
+            Runtime.getRuntime().exec("src/test/resources/NewPixel.bat");
             Thread.sleep(6000);
         }
 
