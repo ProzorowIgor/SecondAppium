@@ -5,7 +5,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -24,20 +23,20 @@ public class Configuration {
 
 
 
-@BeforeSuite
+//@BeforeSuite
         public void initProperties() throws IOException, InterruptedException {
             String deviceType = System.getProperty("device","emulator");
             String target = System.getProperty("target", "data");
             properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-            String appl = properties.getProperty("apiDemo");
-            String device = properties.getProperty("deviceName");
+            String appl = properties.getProperty("GeneralStoreApp");
+            String device = properties.getProperty("newDevice");
             DesiredCapabilities cap = new DesiredCapabilities();
             File appDir = new File("src/test/resources");
             File app = new File(appDir, appl);
 
             if (deviceType.equals("emulator")) {
                 startEmulator();
-                Thread.sleep(6000);
+                Thread.sleep(5000);
                 cap.setCapability(MobileCapabilityType.DEVICE_NAME, device);
             } else if (device.equals("real")) {
                 cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
@@ -52,7 +51,7 @@ public class Configuration {
         public static void startEmulator() throws IOException, InterruptedException
         {
             Runtime.getRuntime().exec("src/test/resources/NewPixel.bat");
-            Thread.sleep(6000);
+            Thread.sleep(5000);
         }
 
 

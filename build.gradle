@@ -28,8 +28,8 @@ task reg(type: Test) {
         }
 
         def suite = System.getProperty('suite', '')
-        if (suite.equals('quick')) {
-            suites 'src/test/resources/test.xml'
+        if (suite.equals('ecomerce')) {
+            suites 'src/test/resources/ecomerce.xml'
         } else if (suite.equals('testSiute')) {
             suites 'src/test/resources/extentreport.xml'
         } else {
