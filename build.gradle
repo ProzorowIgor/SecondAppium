@@ -13,8 +13,9 @@ dependencies {
     implementation 'org.testng:testng:7.4.0'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'io.appium:java-client:7.6.0'
-    //  implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.9'
+    // implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.9'
     implementation 'com.aventstack:extentreports:4.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 test {

@@ -19,6 +19,7 @@ public class Ecommerce extends TestBase {
 
     @BeforeMethod
     public void precondition() throws IOException, InterruptedException {
+        //service = startServer();
         initProperties();
     }
 
